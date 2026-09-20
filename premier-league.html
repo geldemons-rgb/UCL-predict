@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Premier League 2026/27</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        ⚽ Football Predicts
+    </div>
+
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="#">Лиги</a>
+        <a href="#">Рейтинг</a>
+    </nav>
+
+</header>
+
+
+<main class="prediction-page">
+
+    <div class="league-title">
+
+        <div class="league-icon">🏴</div>
+
+        <div>
+            <p class="season">SEASON 2026/27</p>
+
+            <h1>Premier League</h1>
+
+            <p class="subtitle">
+                Прогноз итоговой таблицы
+            </p>
+        </div>
+
+    </div>
+
+
+    <section class="prediction-card">
+
+        <div class="prediction-header">
+
+            <div>
+                <h2>🏆 Наши прогнозы</h2>
+
+                <p>
+                    Расставьте команды с 1-го по 20-е место.
+                </p>
+            </div>
+
+            <button id="saveButton">
+                Сохранить прогноз
+            </button>
+
+        </div>
+
+
+        <div class="players">
+
+            <button class="player active">
+                Damir
+            </button>
+
+            <button class="player">
+                Player 2
+            </button>
+
+            <button class="player">
+                Player 3
+            </button>
+
+            <button class="player">
+                Player 4
+            </button>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Место</th>
+                        <th>Команда</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="predictionTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    Football Predicts © 2026
+</footer>
+
+
+<script>
+
+const teams = [
+    "Arsenal",
+    "Aston Villa",
+    "Bournemouth",
+    "Brentford",
+    "Brighton",
+    "Burnley",
+    "Chelsea",
+    "Crystal Palace",
+    "Everton",
+    "Fulham",
+    "Leeds United",
+    "Liverpool",
+    "Manchester City",
+    "Manchester United",
+    "Newcastle United",
+    "Nottingham Forest",
+    "Sunderland",
+    "Tottenham",
+    "West Ham",
+    "Wolverhampton"
+];
+
+
+const table = document.getElementById("predictionTable");
+
+
+for (let i = 0; i < 20; i++) {
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td class="position">${i + 1}</td>
+
+        <td>
+
+            <select>
+
+                <option value="">
+                    Выберите команду
+                </option>
+
+                ${teams.map(team =>
+                    `<option value="${team}">
+                        ${team}
+                    </option>`
+                ).join("")}
+
+            </select>
+
+        </td>
+    `;
+
+    table.appendChild(row);
+}
+
+
+document.getElementById("saveButton").addEventListener("click", () => {
+
+    alert("Прогноз сохранён! ⚽🔥");
+
+});
+
+
+const players = document.querySelectorAll(".player");
+
+players.forEach(player => {
+
+    player.addEventListener("click", () => {
+
+        players.forEach(p =>
+            p.classList.remove("active")
+        );
+
+        player.classList.add("active");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
